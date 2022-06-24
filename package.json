@@ -4,6 +4,7 @@
   "description": "Adds better metadata management capabilities to vite-plugin-md via the Builder API",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
     }
@@ -16,7 +17,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format=esm,cjs --dts",
+    "build": "tsup src/index.ts --format=esm,cjs --dts --clean",
     "watch": "tsup src/index.ts --format=esm,cjs --dts --watch",
     "lint": "run-p lint:*",
     "lint:src": "eslint ./src/**/*.ts --fix",
