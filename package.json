@@ -1,6 +1,6 @@
 {
   "name": "@yankeeinlondon/meta-builder",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Adds better metadata management capabilities to vite-plugin-md via the Builder API",
   "exports": {
     ".": {
