@@ -26,7 +26,7 @@ specifiers:
   tsup: ^6.1.2
   typescript: ^4.7.4
   vite: ^2.9.12
-  vite-plugin-md: '*'
+  vite-plugin-md: ^0.17.4
   vitest: ^0.15.2
   vue: ^3.2.37
 
