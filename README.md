@@ -1,5 +1,7 @@
 # Meta Builder
 
+> This repo is hosted externally but _provided_ as a "built-in" part of the [**vite-plugin-md**](https://github.com/antfu/vite-plugin-md) plugin.
+
 This is a Builder plugin to [`vite-plugin-md`](https://github.com/antfu/vite-plugin-md) and adds capabilities to manage meta data blocks in your documents.
 
 Using the default functionality of `meta()` is as simple as:
