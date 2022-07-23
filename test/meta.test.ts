@@ -1,12 +1,11 @@
 /* eslint-disable import/no-named-as-default */
-import { beforeAll, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import meta from "../src/index";
-import type { Options, Pipeline, PipelineStage } from "vite-plugin-md";
+import type { Options } from "vite-plugin-md";
 import { composeFixture } from "./utils";
 
 describe('use "meta" builder for frontmatterPreprocess', async () => {
-
   it("with no config, doc props all available as frontmatter props and other meta props get default mapping", async () => {
     const sfc = await composeFixture("meta", { builders: [meta()] });
 
@@ -17,8 +16,8 @@ describe('use "meta" builder for frontmatterPreprocess', async () => {
 
     expect(sfc.head.title).toEqual("Metadata Rules");
     expect(sfc.routeMeta?.meta?.layout).toEqual("yowza");
-    expect(sfc.meta.find(p => p.key === "title")).toBeDefined();
-    expect(sfc.meta.find(p => p.key === "image")).toBeDefined();
+    expect(sfc.meta.find((p) => p.key === "title")).toBeDefined();
+    expect(sfc.meta.find((p) => p.key === "image")).toBeDefined();
   });
 
   it("default value is used when no frontmatter is present", async () => {
@@ -27,25 +26,23 @@ describe('use "meta" builder for frontmatterPreprocess', async () => {
         title: "nada",
         description: "there I was, there I was",
       },
-      builders: [
-        meta(),
-      ],
+      builders: [meta()],
     };
     const sfc = await composeFixture("meta", options);
 
     expect(
       sfc.frontmatter.title,
-      "default value should have been ignored in favor of page value",
+      "default value should have been ignored in favor of page value"
     ).toBe("Metadata Rules");
 
     expect(
       sfc.frontmatter.description,
-      `default value should have presented, found: ${sfc.frontmatter}`,
+      `default value should have presented, found: ${sfc.frontmatter}`
     ).toBe("there I was, there I was");
 
     expect(
-      sfc.meta.find(i => i.key === "description"),
-      "description, as a default value, should now be in meta props",
+      sfc.meta.find((i) => i.key === "description"),
+      "description, as a default value, should now be in meta props"
     ).toBeDefined();
   });
 
@@ -65,39 +62,44 @@ describe('use "meta" builder for frontmatterPreprocess', async () => {
 
 describe("meta() can manage route meta", () => {
   it("router not brought into script section when Markdown doesn't have route meta", async () => {
-    const { scriptSetup } = await composeFixture("simple", { builders: [meta()] });
+    const { scriptSetup } = await composeFixture("simple", {
+      builders: [meta()],
+    });
 
     expect(scriptSetup).not.toContain("useRouter");
   });
 
   it("router IS imported when a a 'route prop' is defined in frontmatter", async () => {
-    const { scriptSetup, frontmatter } = await composeFixture("meta", { builders: [meta()] });
+    const { scriptSetup, frontmatter } = await composeFixture("meta", {
+      builders: [meta()],
+    });
     expect(frontmatter.layout).toBeDefined();
     expect(scriptSetup).toContain("useRouter");
   });
 
   it("using routeName callback ensures that router is imported and route name is set", async () => {
     const { frontmatter, scriptSetup } = await composeFixture("no-route", {
-      builders: [meta({
-        routeName: (filename, fm) => fm.title ? `bespoke-${fm.title}` : "nada",
-      })],
+      builders: [
+        meta({
+          routeName: (filename, fm) =>
+            fm.title ? `bespoke-${fm.title}` : "nada",
+        }),
+      ],
     });
 
     expect(frontmatter.title).toBe("NoRoute");
-    expect(scriptSetup, "should have included an import of useRouter!").toContain("useRouter");
     expect(
       scriptSetup,
-      `The scriptSetup block was:\n${scriptSetup}\n\n`,
+      "should have included an import of useRouter!"
+    ).toContain("useRouter");
+    expect(
+      scriptSetup,
+      `The scriptSetup block was:\n${scriptSetup}\n\n`
     ).toContain('router.currentRoute.value.name = "bespoke-NoRoute"');
   });
 });
 
-
-
-
 describe("meta() snapshots", async () => {
-
-
   it("frontmatter is consistent", async () => {
     const sfc = await composeFixture("meta", { builders: [meta()] });
 
