@@ -47,9 +47,6 @@
     "url": "https://github.com/yankeeinlondon/meta-builder/issues"
   },
   "homepage": "https://github.com/yankeeinlondon/meta-builder#readme",
-  "peerDependencies": {
-    "vite-plugin-md": "*"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
     "@antfu/ni": "^0.17.2",
@@ -80,5 +77,8 @@
     "vite-plugin-md": "^0.19.7",
     "vitest": "^0.18.1",
     "vue": "^3.2.37"
+  },
+  "dependencies": {
+    "@yankeeinlondon/builder-api": "^0.3.0"
   }
 }
