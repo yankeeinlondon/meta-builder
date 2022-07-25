@@ -1,6 +1,10 @@
-import type { Frontmatter, MetaProperty, RouteConfig } from "vite-plugin-md";
+import type {
+  Frontmatter,
+  MetaProperty,
+  RouteConfig,
+} from "@yankeeinlondon/builder-api";
+import { createBuilder } from "@yankeeinlondon/builder-api";
 import { keys, valueOrCallback } from "./utils";
-import { createBuilder } from "vite-plugin-md";
 import { MetaOptions } from "./types";
 
 function addMetaTag(k: string, v: any): MetaProperty {
