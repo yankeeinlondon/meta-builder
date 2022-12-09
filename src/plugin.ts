@@ -32,7 +32,7 @@ export const meta = createBuilder("meta", "metaExtracted")
         "image_width",
         "image_height",
       ],
-      routeProps: ["layout", "requiresAuth"],
+      routeMetaProps: ["layout", "requiresAuth"],
       routeNameProp: "routeName",
       queryParameters: false,
       headProps: ["title"],
@@ -58,7 +58,7 @@ export const meta = createBuilder("meta", "metaExtracted")
       ),
     ];
 
-    const routeMetaProps: Record<string, any> = c.routeProps.reduce(
+    const routeMetaProps: Record<string, any> = c.routeMetaProps.reduce(
       (acc, p) =>
         p in frontmatter ? { ...acc, [p]: frontmatter[p as string] } : acc,
       {}

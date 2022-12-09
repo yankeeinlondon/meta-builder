@@ -3,19 +3,20 @@ import { Pipeline, PipelineStage } from "vite-plugin-md";
 export type MetaFlag = [prop: string, defVal: boolean];
 export type ReturnValues = string | string[] | number | boolean | Object;
 
-export type HeadProperties = "title"
-| "link"
-| "base"
-| "style"
-| "script"
-| "htmlAttrs"
-| "bodyAttrs";
+export type HeadProperties =
+  | "title"
+  | "link"
+  | "base"
+  | "style"
+  | "script"
+  | "htmlAttrs"
+  | "bodyAttrs";
 
 /**
  * A callback for meta-builder callbacks
  */
 export type MetaCallback<T extends ReturnValues> = (
-  filename: string, 
+  filename: string,
   frontmatter: Pipeline<PipelineStage.parser>["frontmatter"]
 ) => T;
 
@@ -34,7 +35,7 @@ export interface MetaOptions {
    *
    * @default ['layout']
    */
-  routeProps: string[];
+  routeMetaProps: string[];
 
   /**
    * Allows the user to configure a bespoke scheme for setting a page's route path.
@@ -71,6 +72,7 @@ export interface MetaOptions {
    *
    * @default ['title']
    */
+  // TODO: This prop may no longer make sense
   headProps: HeadProperties[];
 
   /**

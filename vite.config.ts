@@ -1,22 +1,22 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
-import Vue from '@vitejs/plugin-vue'
-import Markdown from 'vite-plugin-md'
-import meta from './src'
+import { defineConfig } from "vite";
+import Vue from "@vitejs/plugin-vue";
+import Markdown from "vite-plugin-md";
+import meta from "./src";
 
 // used for testing, library code uses TSUP to build exports
 export default defineConfig({
   test: {
-    dir: 'test',
-    environment: 'happy-dom',
+    dir: "test",
+    environment: "happy-dom",
     api: {
-      host: '0.0.0.0',
+      host: "0.0.0.0",
     },
   },
   plugins: [
-    Markdown({ builders: [ meta()] }),
+    Markdown({ builders: [meta()] }),
     Vue({
       include: [/\.vue$/, /\.md$/],
     }),
   ],
-})
+});
