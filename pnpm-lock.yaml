@@ -10,7 +10,7 @@ specifiers:
   '@vitejs/plugin-vue': ^4.0.0
   '@vitest/ui': ^0.25.6
   '@vue/test-utils': ^2.2.6
-  '@yankeeinlondon/builder-api': 0.5.1
+  '@yankeeinlondon/builder-api': ^0.5.1
   bumpp: ^8.2.1
   c8: ^7.12.0
   callsites: ^4.0.0
