@@ -4,7 +4,6 @@
   "description": "Adds better metadata management capabilities to vite-plugin-md via the Builder API",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
   },
