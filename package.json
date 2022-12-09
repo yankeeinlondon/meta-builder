@@ -46,13 +46,14 @@
   },
   "homepage": "https://github.com/yankeeinlondon/meta-builder#readme",
   "dependencies": {
-    "@yankeeinlondon/builder-api": "^0.5.1",
+    "@yankeeinlondon/builder-api": "^0.5.4",
     "inferred-types": "^0.37.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",
     "@antfu/ni": "^0.18.8",
     "@rollup/pluginutils": "^5.0.2",
+    "@types/markdown-it": "^12.2.3",
     "@types/node": "^16.18.7",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",

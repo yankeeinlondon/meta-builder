@@ -4,13 +4,14 @@ specifiers:
   '@antfu/eslint-config': ^0.33.1
   '@antfu/ni': ^0.18.8
   '@rollup/pluginutils': ^5.0.2
+  '@types/markdown-it': ^12.2.3
   '@types/node': ^16.18.7
   '@typescript-eslint/eslint-plugin': ^5.46.0
   '@typescript-eslint/parser': ^5.46.0
   '@vitejs/plugin-vue': ^4.0.0
   '@vitest/ui': ^0.25.6
   '@vue/test-utils': ^2.2.6
-  '@yankeeinlondon/builder-api': ^0.5.1
+  '@yankeeinlondon/builder-api': ^0.5.4
   bumpp: ^8.2.1
   c8: ^7.12.0
   callsites: ^4.0.0
@@ -36,13 +37,14 @@ specifiers:
   vue: ^3.2.45
 
 dependencies:
-  '@yankeeinlondon/builder-api': 0.5.1_wi4yen2i5izpd74m5uukjd4glq
+  '@yankeeinlondon/builder-api': 0.5.4_cvdt6yy2ii4qywfymwts2xrazq
   inferred-types: 0.37.6_jcvziur6i42ajcywqvhg6plwgi
 
 devDependencies:
   '@antfu/eslint-config': 0.33.1_ha6vam6werchizxrnqvarmz2zu
   '@antfu/ni': 0.18.8
   '@rollup/pluginutils': 5.0.2_rollup@3.7.0
+  '@types/markdown-it': 12.2.3
   '@types/node': 16.18.7
   '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
   '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
@@ -68,7 +70,7 @@ devDependencies:
   tsup: 6.5.0_typescript@4.9.4
   typescript: 4.9.4
   vite: 4.0.0_@types+node@16.18.7
-  vite-plugin-md: 0.20.4_jvcmmpayj3qjrzxz4e4kinyuce
+  vite-plugin-md: 0.20.4_lpmphsw4ar4qf4wp7gjj3wzhym
   vitest: 0.25.6_jcvziur6i42ajcywqvhg6plwgi
   vue: 3.2.45
 
@@ -833,23 +835,52 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /@yankeeinlondon/builder-api/0.5.1_wi4yen2i5izpd74m5uukjd4glq:
-    resolution: {integrity: sha512-4kKpZlIACdXFziBTNPhxrpwPYnCB2a7g31E/QJK7R4xdKmN5h5uyu9g7OhWfRlbnLuSeD3+KXj563uJZ2Lx0sA==}
+  /@yankeeinlondon/builder-api/0.5.4_cvdt6yy2ii4qywfymwts2xrazq:
+    resolution: {integrity: sha512-nBkqCeJlNkCXmXjxcgdXr0wxW6tq0di4ZQ+B0FedUF/c13wbZoq3PqYEw7xINF4Pi7ZjkTnBLj2h3ask1ZIjGg==}
     peerDependencies:
+      '@types/markdown-it': ^12.2.3
       markdown-it: ^13.0.1
-      vite-plugin-md: '>=0.20.4'
     dependencies:
       '@types/markdown-it': 12.2.3
-      '@yankeeinlondon/happy-wrapper': 2.9.4_i5qw4nwoqftbdhqpyf6np2vrbm
+      '@yankeeinlondon/happy-wrapper': 2.10.0_akhykwkakfo22fr3ijibcj2b5m
       fp-ts: 2.13.1
       inferred-types: 0.37.6_jcvziur6i42ajcywqvhg6plwgi
       markdown-it: 13.0.1
-      vite-plugin-md: 0.20.4_jvcmmpayj3qjrzxz4e4kinyuce
+      vite-plugin-md: 0.20.4_lpmphsw4ar4qf4wp7gjj3wzhym
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@rollup/pluginutils'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - encoding
+      - happy-dom
+      - jsdom
+      - less
+      - rollup
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: false
+
+  /@yankeeinlondon/builder-api/0.5.4_s3vlxh3vqzkfeiaiwu3ekhxhye:
+    resolution: {integrity: sha512-nBkqCeJlNkCXmXjxcgdXr0wxW6tq0di4ZQ+B0FedUF/c13wbZoq3PqYEw7xINF4Pi7ZjkTnBLj2h3ask1ZIjGg==}
+    peerDependencies:
+      '@types/markdown-it': ^12.2.3
+      markdown-it: ^13.0.1
+    dependencies:
+      '@types/markdown-it': 12.2.3
+      '@yankeeinlondon/happy-wrapper': 2.10.0_akhykwkakfo22fr3ijibcj2b5m
+      fp-ts: 2.13.1
+      inferred-types: 0.37.6
+      markdown-it: 13.0.1
+      vite-plugin-md: 0.20.4_lpmphsw4ar4qf4wp7gjj3wzhym
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
       - '@vitest/ui'
-      - happy-dom
+      - encoding
       - jsdom
       - less
       - sass
@@ -858,11 +889,10 @@ packages:
       - supports-color
       - terser
 
-  /@yankeeinlondon/happy-wrapper/2.9.4_i5qw4nwoqftbdhqpyf6np2vrbm:
-    resolution: {integrity: sha512-D+NyypHpKMLr9xq5YThtDj+ba8LbEE7sGIhERHqmY0WkT/rw7qaTdfhUw+ckG1joIX3jr27zP7nXOlpqsAsJWQ==}
+  /@yankeeinlondon/happy-wrapper/2.10.0_akhykwkakfo22fr3ijibcj2b5m:
+    resolution: {integrity: sha512-gQ01fAcX+GP3kL0LRwZswLDz6sotzBD3kbU1n5bygM2geszFoQY/GetHiTHNuVNGBwhjD4vX+pQBxtuZ+ALSFw==}
     peerDependencies:
       fp-ts: ^2.13.1
-      happy-dom: ^8.1.0
     dependencies:
       fp-ts: 2.13.1
       happy-dom: 8.1.0
@@ -871,6 +901,7 @@ packages:
       - '@edge-runtime/vm'
       - '@vitest/browser'
       - '@vitest/ui'
+      - encoding
       - jsdom
       - less
       - sass
@@ -1005,7 +1036,7 @@ packages:
     dependencies:
       bumpp: 8.2.1
       callsites: 4.0.0
-      inferred-types: 0.37.6_jcvziur6i42ajcywqvhg6plwgi
+      inferred-types: 0.37.6
       vitest: 0.25.6_jcvziur6i42ajcywqvhg6plwgi
     transitivePeerDependencies:
       - '@edge-runtime/vm'
@@ -2368,6 +2399,11 @@ packages:
     resolution: {integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==}
     engines: {node: '>=8'}
     dev: true
+
+  /inferred-types/0.37.6:
+    resolution: {integrity: sha512-CfL5g1wR5rVwX2K5S6wSL+h9eODScum/LBwlhGRrcBIvfYppvUQM0aeRJ1BZS+QE38kGzd3v+U526+nQR7ZUkg==}
+    dependencies:
+      brilliant-errors: 0.7.3_jcvziur6i42ajcywqvhg6plwgi
 
   /inferred-types/0.37.6_jcvziur6i42ajcywqvhg6plwgi:
     resolution: {integrity: sha512-CfL5g1wR5rVwX2K5S6wSL+h9eODScum/LBwlhGRrcBIvfYppvUQM0aeRJ1BZS+QE38kGzd3v+U526+nQR7ZUkg==}
@@ -3770,25 +3806,26 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-md/0.20.4_jvcmmpayj3qjrzxz4e4kinyuce:
+  /vite-plugin-md/0.20.4_lpmphsw4ar4qf4wp7gjj3wzhym:
     resolution: {integrity: sha512-W3Z59/ROS2X6OIwPwV2PjE+QkfW0UVGxyf3Z2JR0OLqGJ+Iy2SGA503m/vmATJv+C3DjeU8Oy8diQx1R+IyRwQ==}
     peerDependencies:
       '@rollup/pluginutils': ^4.2.1
       rollup: ^2.77.0
     dependencies:
       '@rollup/pluginutils': 5.0.2_rollup@3.7.0
-      '@yankeeinlondon/builder-api': 0.5.1_wi4yen2i5izpd74m5uukjd4glq
-      '@yankeeinlondon/happy-wrapper': 2.9.4_i5qw4nwoqftbdhqpyf6np2vrbm
+      '@yankeeinlondon/builder-api': 0.5.4_s3vlxh3vqzkfeiaiwu3ekhxhye
+      '@yankeeinlondon/happy-wrapper': 2.10.0_akhykwkakfo22fr3ijibcj2b5m
       gray-matter: 4.0.3
       markdown-it: 13.0.1
       rollup: 3.7.0
       source-map-js: 1.0.2
     transitivePeerDependencies:
       - '@edge-runtime/vm'
+      - '@types/markdown-it'
       - '@vitest/browser'
       - '@vitest/ui'
+      - encoding
       - fp-ts
-      - happy-dom
       - jsdom
       - less
       - sass
