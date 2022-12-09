@@ -9,9 +9,6 @@ export default defineConfig({
   test: {
     dir: "test",
     environment: "happy-dom",
-    api: {
-      host: "0.0.0.0",
-    },
   },
   plugins: [
     Markdown({ builders: [meta()] }),
