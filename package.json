@@ -45,10 +45,9 @@
     "url": "https://github.com/yankeeinlondon/meta-builder/issues"
   },
   "homepage": "https://github.com/yankeeinlondon/meta-builder#readme",
-  "peerDependencies": {
-    "@rollup/pluginutils": ">=5.0.2",
-    "@yankeeinlondon/builder-api": ">=0.4.1",
-    "inferred-types": ">=0.37.6"
+  "dependencies": {
+    "@yankeeinlondon/builder-api": "^0.5.1",
+    "inferred-types": "^0.37.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",
