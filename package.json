@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/yankeeinlondon/meta-builder#readme",
   "dependencies": {
-    "@yankeeinlondon/builder-api": "^0.5.6",
+    "@yankeeinlondon/builder-api": "^0.5.7",
     "inferred-types": "^0.37.6"
   },
   "devDependencies": {
