@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/yankeeinlondon/meta-builder#readme",
   "dependencies": {
-    "@yankeeinlondon/builder-api": "^0.5.7",
+    "@yankeeinlondon/builder-api": "^0.5.8",
     "inferred-types": "^0.37.6"
   },
   "devDependencies": {
@@ -76,7 +76,7 @@
     "rollup": "^3.7.3",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4",
-    "vite": "^4.0.0",
+    "vite": "^4.0.1",
     "vite-plugin-md": "^0.20.6",
     "vitest": "^0.25.7",
     "vue": "^3.2.45"
