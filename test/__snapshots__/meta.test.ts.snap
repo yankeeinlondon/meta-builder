@@ -1,5 +1,53 @@
 // Vitest Snapshot v1
 
+exports[`meta() as any snapshots > HTML is consistent 1`] = `
+"<div class=\\"markdown-body\\"><h1>Metadata</h1>
+<blockquote>
+<p>{{ byline }}</p>
+</blockquote>
+<p>This is a markdown file intended for testing meta data.</p>
+<p><img src=\\"{{image}}\\" alt=\\"image\\">
+<img src=\\"{{ image }}\\"></p>
+</div>"
+`;
+
+exports[`meta() as any snapshots > custom blocks are consistent 1`] = `[]`;
+
+exports[`meta() as any snapshots > frontmatter is consistent 1`] = `
+{
+  "byline": "who loves ya baby?",
+  "image": "facebook.png",
+  "layout": "yowza",
+  "name": "MetaBuilder",
+  "title": "Metadata Rules",
+}
+`;
+
+exports[`meta() as any snapshots > script blocks are consistent 1`] = `
+[
+  "
+<script lang=\\"ts\\">
+/** frontmatter meta-data for MD page **/
+export interface Frontmatter {
+  title?: string
+  description?: string
+  subject?: string
+  category?: string
+  name?: string
+  excerpt?: string
+  image?: string
+  layout?: string
+  requiredAuth?: boolean
+  meta?: Record<string, any>[]
+  [key: string]: unknown
+}
+export const frontmatter: Frontmatter = {\\"title\\":\\"Metadata Rules\\",\\"name\\":\\"MetaBuilder\\",\\"byline\\":\\"who loves ya baby?\\",\\"layout\\":\\"yowza\\",\\"image\\":\\"facebook.png\\"}
+export const excerpt: string | undefined = \\"\\"
+
+</script>",
+]
+`;
+
 exports[`meta() snapshots > HTML is consistent 1`] = `
 "<div class=\\"markdown-body\\"><h1>Metadata</h1>
 <blockquote>

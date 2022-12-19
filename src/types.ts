@@ -1,4 +1,5 @@
-import { Pipeline, PipelineStage } from "vite-plugin-md";
+import { Suggest } from "inferred-types";
+import { Pipeline } from "vite-plugin-md";
 
 export type MetaFlag = [prop: string, defVal: boolean];
 export type ReturnValues = string | string[] | number | boolean | Object;
@@ -17,7 +18,7 @@ export type HeadProperties =
  */
 export type MetaCallback<T extends ReturnValues> = (
   filename: string,
-  frontmatter: Pipeline<PipelineStage.parser>["frontmatter"]
+  frontmatter: Pipeline<"parser">["frontmatter"]
 ) => T;
 
 /** configuration options for the `meta-builder` extension */
@@ -29,6 +30,7 @@ export interface MetaOptions {
    * @default [ 'title', 'description', 'image', 'url', 'image_width', 'image_height' ]
    */
   metaProps: string[];
+
   /**
    * Properties in frontmatter dictionary which will be treated as "route meta" properties
    * when discovered in documents
@@ -56,6 +58,14 @@ export interface MetaOptions {
   routeNameProp?: string | false;
 
   /**
+   * By default the "meta tags" are just inserted into the HEAD section of the page
+   * but if you want their name/value pairs being exposed as frontmatter props too
+   * then you can add them to a property name of your choosing but be sure choose
+   * a name that will avoid conflicts with page authors.
+   */
+  addMetaTagsToFrontmatter?: false | Suggest<"_meta_tags">;
+
+  /**
    * Allows you to pass in a callback function which will receive both the _filename_ and
    * the _frontmatter_ on the page to allow your callback to decide what the name for the
    * route should be.
@@ -67,19 +77,26 @@ export interface MetaOptions {
   routeName?: MetaCallback<string | false>;
 
   /**
-   * Properties in frontmatter dictionary which will be treated as HEAD properties
-   * when discovered in documents
-   *
-   * @default ['title']
+   * @deprecated setting this currently has no function
    */
-  // TODO: This prop may no longer make sense
-  headProps: HeadProperties[];
+  headProps?: HeadProperties[];
+
+  /**
+   * **titleProp**
+   *
+   * Allows you to express which property in the frontmatter
+   * should be associated with the "title" of the page (aka, used
+   * to create the `<title>...</title>` block in the HEAD).
+   *
+   * @default "title"
+   */
+  titleProp?: Suggest<"title">;
 
   /**
    * If turned on, this will ensure that all query parameters on the given route
-   * are made available under the `queryParams` variable.
+   * are made available under the `queryParams` variable in frontmatter.
    *
    * @default false
    */
-  queryParameters: Boolean;
+  queryParameters?: Boolean;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/consistent-destructuring */
 import type {
   Frontmatter,
   MetaProperty,
@@ -6,8 +7,13 @@ import type {
 import { createBuilder } from "@yankeeinlondon/builder-api";
 import { keys, valueOrCallback } from "./utils";
 import { MetaOptions } from "./types";
+import { isRef, Ref } from "vue";
 
-function addMetaTag(k: string, v: any): MetaProperty {
+type MaybeRef<T> = T | Ref<T>;
+
+// utility fns for working MaybeRef types
+const set = (p: MaybeRef<any>, v: any) => (isRef(p) ? (p.value = v) : (p = v));
+function createMetaTag(k: string, v: any): MetaProperty {
   return {
     name: `twitter:${k}`,
     property: `og:${k}`,
@@ -22,8 +28,8 @@ export const meta = createBuilder("meta", "metaExtracted")
   .initializer()
   .handler(async (p, o) => {
     // eslint-disable-next-line prefer-const
-    let { frontmatter, meta, head, fileName } = p;
-    const c: MetaOptions = {
+    let { frontmatter, fileName, addMetaProperty } = p;
+    const c = {
       metaProps: [
         "image",
         "title",
@@ -35,29 +41,32 @@ export const meta = createBuilder("meta", "metaExtracted")
       routeMetaProps: ["layout", "requiresAuth"],
       routeNameProp: "routeName",
       queryParameters: false,
-      headProps: ["title"],
+      titleProp: "title",
 
       ...o,
-    };
+    } satisfies MetaOptions;
 
-    head = {
-      ...head,
-      ...Object.fromEntries(
-        c?.headProps.map((p) => [p, frontmatter[p as string]])
-      ),
-    };
-
-    meta = [
-      ...meta,
-      ...c.metaProps.reduce(
+    /** array of meta tags */
+    const meta = [
+      ...c?.metaProps.reduce(
         (acc, p) =>
           frontmatter[p as string]
-            ? [...acc, addMetaTag(p, frontmatter[p as string])]
+            ? [...acc, createMetaTag(p, frontmatter[p as string])]
             : acc,
         [] as MetaProperty[]
       ),
     ];
+    // inject into payload
+    meta.map((m) => addMetaProperty(m));
+    // add meta into frontmatter if configured to do so
+    if (o.addMetaTagsToFrontmatter) {
+      frontmatter = {
+        ...frontmatter,
+        [o.addMetaTagsToFrontmatter]: meta,
+      };
+    }
 
+    /** the route's meta properties */
     const routeMetaProps: Record<string, any> = c.routeMetaProps.reduce(
       (acc, p) =>
         p in frontmatter ? { ...acc, [p]: frontmatter[p as string] } : acc,
@@ -143,9 +152,13 @@ export const meta = createBuilder("meta", "metaExtracted")
       p.addCodeBlock("route-meta", router.join("\n"));
     }
 
+    // set the title if available info present
+    if (p.frontmatter && o.titleProp && frontmatter[o.titleProp]) {
+      set(p.head.title, frontmatter[o.titleProp]);
+    }
+
     return {
       ...p,
-      head,
       meta,
       routeMeta: Object.keys(routeMeta).length > 0 ? routeMeta : undefined,
       frontmatter,
@@ -155,5 +168,3 @@ export const meta = createBuilder("meta", "metaExtracted")
     description:
       "adds meta-tags to the HEAD of the page in a way that is easily digested by social media sites and search engines",
   });
-
-const _f = meta({});

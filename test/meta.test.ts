@@ -7,7 +7,7 @@ import { composeFixture } from "./utils";
 
 describe('use "meta" builder for frontmatterPreprocess', async () => {
   it("with no config, doc props all available as frontmatter props and other meta props get default mapping", async () => {
-    const sfc = await composeFixture("meta", { builders: [meta()] });
+    const sfc = await composeFixture("meta", { builders: [meta() as any] });
 
     expect(sfc.frontmatter.title).toEqual("Metadata Rules");
     expect(sfc.frontmatter.byline).toEqual("who loves ya baby?");
@@ -26,7 +26,7 @@ describe('use "meta" builder for frontmatterPreprocess', async () => {
         title: "nada",
         description: "there I was, there I was",
       },
-      builders: [meta()],
+      builders: [meta() as any],
     };
     const sfc = await composeFixture("meta", options);
 
@@ -60,10 +60,10 @@ describe('use "meta" builder for frontmatterPreprocess', async () => {
   });
 });
 
-describe("meta() can manage route meta", () => {
+describe("meta() as any can manage route meta", () => {
   it("router not brought into script section when Markdown doesn't have route meta", async () => {
     const { scriptSetup } = await composeFixture("simple", {
-      builders: [meta()],
+      builders: [meta() as any],
     });
 
     expect(scriptSetup).not.toContain("useRouter");
@@ -71,7 +71,7 @@ describe("meta() can manage route meta", () => {
 
   it("router IS imported when a a 'route prop' is defined in frontmatter", async () => {
     const { scriptSetup, frontmatter } = await composeFixture("meta", {
-      builders: [meta()],
+      builders: [meta() as any],
     });
     expect(frontmatter.layout).toBeDefined();
     expect(scriptSetup).toContain("useRouter");
@@ -83,7 +83,7 @@ describe("meta() can manage route meta", () => {
         meta({
           routeName: (filename, fm) =>
             fm.title ? `bespoke-${fm.title}` : "nada",
-        }),
+        }) as any,
       ],
     });
 
@@ -99,27 +99,27 @@ describe("meta() can manage route meta", () => {
   });
 });
 
-describe("meta() snapshots", async () => {
+describe("meta() as any snapshots", async () => {
   it("frontmatter is consistent", async () => {
-    const sfc = await composeFixture("meta", { builders: [meta()] });
+    const sfc = await composeFixture("meta", { builders: [meta() as any] });
 
     expect(sfc.frontmatter).toMatchSnapshot();
   });
 
   it("HTML is consistent", async () => {
-    const sfc = await composeFixture("meta", { builders: [meta()] });
+    const sfc = await composeFixture("meta", { builders: [meta() as any] });
 
     expect(sfc.html).toMatchSnapshot();
   });
 
   it("script blocks are consistent", async () => {
-    const sfc = await composeFixture("meta", { builders: [meta()] });
+    const sfc = await composeFixture("meta", { builders: [meta() as any] });
 
     expect(sfc.scriptBlocks).toMatchSnapshot();
   });
 
   it("custom blocks are consistent", async () => {
-    const sfc = await composeFixture("meta", { builders: [meta()] });
+    const sfc = await composeFixture("meta", { builders: [meta() as any] });
 
     expect(sfc.customBlocks).toMatchSnapshot();
   });

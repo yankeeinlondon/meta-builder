@@ -6,9 +6,8 @@ import meta from "./src";
 
 // used for testing, library code uses TSUP to build exports
 export default defineConfig({
-
   plugins: [
-    Markdown({ builders: [meta()] }),
+    Markdown({ builders: [meta() as any] }),
     Vue({
       include: [/\.vue$/, /\.md$/],
     }),
